@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
     position: relative;
@@ -24,6 +24,19 @@ export const Container = styled.div`
         height: 24px;
         border-radius: 25px
     }
+
+    ${props => props.isDragging && css`
+        border: 2px dashed rgba(0, 0, 0, 0.2);
+        padding-top: 31px;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        cursos: grabbing;
+
+        p, img, header{
+            opacity: 0;
+        }
+    `}
 `
 
 export const Label = styled.span`

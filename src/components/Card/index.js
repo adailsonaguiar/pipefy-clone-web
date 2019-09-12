@@ -1,15 +1,22 @@
 import React from 'react'
-
 import { Container, Label } from './styles'
+import { useDrag } from 'react-dnd'
 
-export default function Card() {
+export default function Card({ data }) {
+
+    const [{ isDragging }, dragRef] = useDrag({
+        item: { type: 'CARD' },
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        })
+    })
     return (
-        <Container>
+        <Container ref={dragRef} isDragging={isDragging}>
             <header>
-                <Label color="#7159c1" />
+                {data.labels.map(label => <Label color={label} />)}
             </header>
-            <p>Fazer esta tarefa o mais rápido possível</p>
-            <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="" />
+            <p>{data.content}</p>
+            {data.user && <img src={data.user} alt="" />}
         </Container>
     )
 }
