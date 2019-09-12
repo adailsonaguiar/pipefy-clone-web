@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, Label } from './styles';
+import { Container, Label } from './styles'
 
 export default function Card() {
     return (
