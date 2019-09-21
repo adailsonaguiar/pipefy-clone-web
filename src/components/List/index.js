@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import { Container } from './styles'
-import { MdAdd } from 'react-icons/md'
-import Card from '../Card'
+import { Container } from './styles';
+import { MdAdd } from 'react-icons/md';
+import Card from '../Card';
 
 export default function List({ data }) {
     return (
@@ -10,14 +10,16 @@ export default function List({ data }) {
             <header>
                 <h2>{data.title}</h2>
                 {data.creatable && (
-                    <buttom type="button">
+                    <button type="button">
                         <MdAdd size={24} color="#FFF" />
-                    </buttom>
+                    </button>
                 )}
             </header>
             <ul>
-                {data.cards.map(card => <Card key={card.id} data={card} />)}
+                {data.cards.map(card => (
+                    <Card key={card.id} data={card} />
+                ))}
             </ul>
         </Container>
-    )
+    );
 }
